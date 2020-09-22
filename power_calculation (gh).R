@@ -82,7 +82,7 @@ sigma_est<-function(n,u,s,y,h2){
     }
     diff<-de2-de1
     de1<-de2
-    if (diff<=0.000001)
+    if (abs(diff)<=0.000001)
       break
   }
   sg<-sum((x^2)/(de2+s))/n
