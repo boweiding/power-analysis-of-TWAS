@@ -76,6 +76,10 @@ sigma_est<-function(n,u,s,y,h2){
   diff<-1
   while(TRUE){
     de2<-de1-eval(f1(de1))/eval(f2(de1)) ##newton method
+    if(abs(eval(f2(de2)))<=(1e-14)){## Stop if the denominator is too small
+      de2<-de1   
+      break      
+    }
     if (eval(f1(de2))<=0){
       de2<-de1
       break
