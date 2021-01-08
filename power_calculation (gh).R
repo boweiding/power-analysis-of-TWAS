@@ -441,7 +441,7 @@ R2<-NULL
 ptm<-proc.time()
 for (j in 1:q){
   setwd(paste0(pa,name[j])) ## pa is the parents path, e.g. "/gpfs/qlong/GROUP_DATA/Genomes/Human_GWAS/ncbi/dbGaP-11604-CVD/20190807_qing_download/70297/PhenoGenotypeFiles/RootStudyConsentSet_phs000424.GTEx.v8.p2.c1.GRU/4Bowei/1000G/power_result/"
-  sim<-simulatey(j,x,x_id,zmap,i,min,max,ht,h1,h2,kxvector,kxs,kzvector,kzs,nind)
+  sim<-simulatey(q,x,x_id,z,i,min,max,ht,h1,h2,kxvector,kxs,nind)
   y_x<-sim$y_x
   y_z<-sim$y_z
   sim_x<-sim$x## all snps that were selected regarding different genes
