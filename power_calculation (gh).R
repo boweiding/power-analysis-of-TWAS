@@ -205,7 +205,7 @@ simulatey<-function(q,x,x_id,z,i,min,max,ht,h1,h2,kxvector,kxs,nind){##simulate 
     for (k in 2:length(z[z_num[j],]) ) {
       fx<-x[z[z_num[j],k]==x_id,]
       snpid<-c(snpid,z[z_num[j],k])
-      xfit<-cbind(xfit,fx)######to be debug
+      xfit<-cbind(xfit,fx)
     }
     searcha<-foreach(q=a, .combine = rbind) %dopar% {
       cv<-cv.glmnet(xfit,zgroup[,j],family= "gaussian",nfold=10, type.measure = "deviance",parallel = TRUE, alpha=q)
@@ -357,7 +357,7 @@ egwasmodel<-function(sim_x,sim_z,y_x,y_z,D_yx,D_yz,xnum,i,xgroupindex,zindex,zma
     power_x1_temp<-1
     for (k in ininum:numx){
       temp_ncp<-ncp_zx(sim_x[,k],sim_z[,j],nind)
-      temp_power<-1-pt(q=ql_zx,df=nind-2,ncp=temp_ncp)#######
+      temp_power<-1-pt(q=ql_zx,df=nind-2,ncp=temp_ncp)
       power_zx<-c(power_zx,temp_power)
       power_x1_temp<-power_x1_temp*(1-temp_power)
     }
@@ -440,7 +440,7 @@ ca<-NULL
 R2<-NULL
 ptm<-proc.time()
 for (j in 1:q){
-  setwd(paste0(pa,name[j])) ## pa is the parents path, e.g. "/gpfs/qlong/GROUP_DATA/Genomes/Human_GWAS/ncbi/dbGaP-11604-CVD/20190807_qing_download/70297/PhenoGenotypeFiles/RootStudyConsentSet_phs000424.GTEx.v8.p2.c1.GRU/4Bowei/1000G/power_result/"
+  setwd(paste0(pa,name[j])) ## pa is the parents path"
   sim<-simulatey(q,x,x_id,z,i,min,max,ht,h1,h2,kxvector,kxs,nind)
   y_x<-sim$y_x
   y_z<-sim$y_z
